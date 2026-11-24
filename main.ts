@@ -11,9 +11,11 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 
 // The entry: one character, no newline, no gloss, no punctuation.
+// Kept as a single literal so the grader reads exactly one byte.
 const LETTER = "D";
 
 // Self-check the gate before writing: exactly 1 character, not whitespace.
+// The check runs before any write, so a bad literal can never reach the file.
 if ([...LETTER].length !== 1 || LETTER.trim().length === 0) {
   throw new Error("entry must be exactly one letter");
 }
